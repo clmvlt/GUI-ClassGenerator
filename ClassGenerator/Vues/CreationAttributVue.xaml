@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClassGenerator.Vues.CreationAttributVue"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             Title="CreationAttributVue">
+    <ScrollView>
+        <VerticalStackLayout Margin="20, 20, 20, 20">
+            <Label Text="Classe" FontSize="20"/>
+            <Label Text="Nom de la classe :"/>
+            <Entry Margin="0,5,0,0" x:Name="entryNomClasse" WidthRequest="200" HorizontalOptions="Start"/>
+
+            <Label Margin="0,20,0,0" Text="Attributs" FontSize="20"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0">
+                    <Label Text="Nom de l'attribut :"/>
+                    <Entry Margin="0,5,0,0" x:Name="entryNomAttribut" WidthRequest="200" HorizontalOptions="Start"/>
+                    <Label Text="Valeur par défault :"/>
+                    <Entry Margin="0,5,0,0" x:Name="entryDefaultValueAttribut" WidthRequest="200" HorizontalOptions="Start"/>
+
+                    <Label Text="Type de l'attribut :"/>
+                    <ListView x:Name="typeAttribut"  WidthRequest="100" HorizontalOptions="Start" Margin="0,5,0,0" ItemsSource="{Binding LesTypes}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label Text="{Binding Nom}"/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="cbIsGetter" Scale="0.7" AnchorY="1.5" />
+                        <Label Margin="0,20,0,0" Text="Utiliser Getteur"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="cbIsSetter" Scale="0.7" AnchorY="1.5" />
+                        <Label Margin="0,20,0,0" Text="Utiliser Setteur"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="cbIsConstruct" Scale="0.7" AnchorY="1.5" />
+                        <Label Margin="0,20,0,0" Text="Utiliser Constructeur"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="cbIsList" Scale="0.7" AnchorY="1.5" />
+                        <Label Margin="0,20,0,0" Text="Est une liste"/>
+                    </HorizontalStackLayout>
+                    <Button Margin="0,20,0,0" Text="Ajouter" WidthRequest="100" HeightRequest="40" HorizontalOptions="Start" BackgroundColor="Orange" TextColor="Black" x:Name="btnAddAttribute" Clicked="btnAddAttribute_Clicked"/>
+                </StackLayout>
+                <StackLayout Grid.Column="1">
+                    <ListView x:Name="listAttributs"  WidthRequest="100" HorizontalOptions="Start" Margin="0,5,0,0" ItemsSource="{Binding LesAttributs}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label Text="{Binding Nom}"/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+            
+            <Label Margin="0,20,0,0" Text="Méthodes" FontSize="20"/>
+            <Label Text="Nom de la méthode :"/>
+            <Entry Margin="0,5,0,0" x:Name="entryNomMethode" WidthRequest="200" HorizontalOptions="Start"/>
+            <Button Margin="0,20,0,0" Text="Ajouter" WidthRequest="100" HeightRequest="40" HorizontalOptions="Start" BackgroundColor="Orange" TextColor="Black" x:Name="btnAddMethode" Clicked="btnAddMethode_Clicked"/>
+
+            <Button Margin="0,20,0,0" Text="Générer" WidthRequest="200" HorizontalOptions="Start" BackgroundColor="Orange" TextColor="Black" x:Name="btnGenerate" Clicked="btnGenerate_Clicked"/>
+
+            <Label Text="{Binding StringGenerated}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
