@@ -10,7 +10,7 @@ namespace ClassGenerator.VuesModeles
     public class CreationAttributVueModele : BaseVueModele
     {
         #region Attributes
-        public Structure classe = new Structure("classe");
+        public Structure classe = new Structure("");
         private string _stringGenerated;
         private List<Attribut> _attributs;
         #endregion
@@ -22,6 +22,8 @@ namespace ClassGenerator.VuesModeles
             new Typage("string");
             new Typage("bool");
             new Typage("float");
+
+            this.ThreadGenerateClass();
         }
         #endregion
 
@@ -40,13 +42,13 @@ namespace ClassGenerator.VuesModeles
         {
             get => _attributs;
             set => SetProperty(ref _attributs, value);
-
         }
         #endregion
 
         #region Méthodes
         public void GenerateClass(string nomClasse)
         {
+            if (classe.Nom == null || classe.Nom == String.Empty) return;
             classe.Nom = nomClasse;
             StringGenerated = classe.Generate();
         }

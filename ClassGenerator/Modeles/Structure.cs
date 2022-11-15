@@ -96,7 +96,7 @@ namespace ClassGenerator.Modeles
                 res += at.GetStringConstructSign();
                 if (this._attributs.Last() != at) res += ",";
             }
-            res += ")\n{\n";
+            res += "this.CollClass.Add(this)\n)\n{\n";
             foreach (Attribut at in this._attributs)
             {
                 res += at.GetStringConstruct();

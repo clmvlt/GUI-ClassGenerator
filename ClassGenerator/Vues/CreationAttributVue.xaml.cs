@@ -33,7 +33,6 @@ public partial class CreationAttributVue : ContentPage
         cbIsList.IsChecked = false;
         cbIsGetter.IsChecked = false;
         cbIsSetter.IsChecked = false;
-        vueModele.LesAttributs = vueModele.classe.Attributs;
     }
 
     private void btnAddMethode_Clicked(object sender, EventArgs e)
